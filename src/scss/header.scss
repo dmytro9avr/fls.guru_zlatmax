@@ -77,12 +77,17 @@
 		@extend ._icon-logo;
 		font-size: rem(42);
 		color: $mainDarkColor;
-
+		
 	}
 	// .body-header__search
 	&__search {
 		@include adaptiveValue("padding-left", 158, 20);
 	}
+	// .body-header__actions
+	&__actions {
+	}
+	
+	
 }
 .search-header {
 	border-radius: rem(3);
@@ -116,7 +121,67 @@
 	}
 }
 
+//====================================================================================================
 
+.actions-header {
+	// .actions-header__location
+	&__location {
+		display: flex;
+		align-items: center;
+		color: $mainDarkColor;
+		font-weight: 600;
+		&::before {
+			font-size: rem(24);
+			margin: 0 em(10, 24) 0 0;
+		}
+	}
+	// .actions-header__phones
+	&__phones {
+	}
+	// .actions-header__favorite
+	&__favorite {
+	}
+	// .actions-header__cart
+	&__cart {
+	}
+}
+
+.phones-header {
+	// .phones-header__items
+	&__items {
+	}
+	// .phones-header__item
+	&__item {
+	}
+	// .phones-header__title
+	&__title {
+	}
+	// .phones-header__list
+	&__list {
+	}
+	// .phones-header__callback
+	&__callback {
+	}
+}
+.phone-header {
+	// .phone-header__phone
+	&__phone {
+	}
+}
+.cart-header {
+	// .cart-header__icon
+	&__icon {
+	}
+	// .cart-header__body
+	&__body {
+	}
+	// .cart-header__summ
+	&__summ {
+	}
+	// .cart-header__link
+	&__link {
+	}
+}
 
 
 //====================================================================================================
