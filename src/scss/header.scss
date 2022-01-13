@@ -43,24 +43,28 @@
 	
 	}
 }
-.menu {
-	// .menu__body
-	&__body {
-	}
-	// .menu__list
+.menu-top-header {
+	// .menu-top-header__list
 	&__list {
 		display: flex;
-		flex-wrap: wrap;
+		// flex-wrap: wrap;
 		row-gap: 5px;
 		@include adaptiveValue("column-gap", 60, 20);
-				// cool for adaptive gap to screen size !!!
-				// and more 
-				// =========================
-	}
-	// .menu__item
+		@media (max-width: $tablet) {
+			flex-direction: column;
+			row-gap: 10px;
+		}
+}
+	// .menu-top-header__item
 	&__item {
+		&_catalog {
+			@media (min-width: $tablet) {
+				display: none;
+			}
+		}
+
 	}
-	// .menu__link
+	// .menu-top-header__link
 	&__link {
 		font-size: rem(16);
 		line-height: math.div(20, 16);
@@ -68,6 +72,41 @@
 			&:hover {
 				text-decoration: underline;
 			}
+		}
+		&_catalog {
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: space-between;
+			&::before {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				flex:0 0 14px;
+				height: 14px;
+				font-size: rem(8);
+				transform: rotate(-90deg);
+			}
+		}
+
+	}
+}
+.menu {
+	@media (max-width: $tablet) {
+		flex: 0 0 30px;
+		display: block;
+	}
+	// .menu__body
+	&__body {
+		@media (max-width: $tablet) {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			overflow: auto;
+			background-color: $mainDarkColor;
+			padding: rem(50) rem(15);
+			z-index: 4;
 		}
 	}
 	// .menu__icon
@@ -98,7 +137,8 @@
 	&__search {
 		flex: 1 1 auto;
 		padding-right: rem(20);
-		@include adaptiveValue("padding-left", 158, 20);
+		@include adaptiveValue("padding-left", 158, 20, 1620, 1400, 1);
+		// @include adaptiveValue("свойство которое будет изменяться", окно ОТ, окно ДО, в диапазоне ОТ, в диапазоне ДО, 1);
 	}
 	// .body-header__actions
 	&__actions {
@@ -145,13 +185,13 @@
 .actions-header {
 	display: flex;
 	align-items: center;
-	column-gap: rem(30);
+	@include adaptiveValue("column-gap", 30, 20, 1620, 1000, 1);
 	// .actions-header__location
 	&__location {
 		display: inline-flex;
 		align-items: center;
 		font-weight: 600;
-		margin: 0 rem(25) 0 0;
+		@include adaptiveValue("margin-right", 25, 0, 1620, 1300, 1);
 		&::before {
 			font-size: rem(24);
 			margin: 0 em(10, 24) 0 0;
@@ -166,6 +206,7 @@
 	}
 	// .actions-header__phones
 	&__phones {
+		flex: 0 0 auto;
 	}
 	// .actions-header__favorite
 	&__favorite {
@@ -173,9 +214,9 @@
 	}
 	// .actions-header__cart
 	&__cart {
+
 	}
 }
-
 .phones-header {
 	// .phones-header__items
 	&__items {
@@ -261,6 +302,9 @@
 		font-size: rem(16);
 		line-height: math.div(20, 16);
 		flex: 0 0 auto;
+		@media (max-width: em(1250)) {
+			display: none;
+		}
 	}
 	// .cart-header__summ
 	&__summ {
@@ -459,11 +503,11 @@
 
 //Burger
 .icon-menu {
-	display: none;
-	@media (max-width: $mobile) {
+	
+	@media (max-width: $tablet) {
 		display: block;
 		position: relative;
-		flex: 0 0 30px;
+		width: 30px;
 		height: 18px;
 		cursor: pointer;
 		z-index: 5;
