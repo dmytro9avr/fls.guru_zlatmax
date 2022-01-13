@@ -4,6 +4,14 @@
 
 document.addEventListener("click", documentActions);
 
+const menuBlock = document.querySelectorAll('.sub-menu-catalog__block');
+if (menuBlock.length) {
+   menuBlock.forEach(menuBlock => {
+      const menuBlockItems = menuBlock.querySelectorAll('.sub-menu-catalog__category').length;
+      menuBlock.classList.add(`sub-menu-catalog__block_${menuBlockItems}`);
+   });
+}
+
 function documentActions(e) {
    const targetElement = e.target ;
    if (targetElement.closest('[data-parent]')) {
