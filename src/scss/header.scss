@@ -432,6 +432,7 @@
 	color: #fff;
 	@media (max-width: $mobileSmall) {
 		padding: rem(20) 0;
+		margin-bottom: -1px;
 	}	
 
 	// .catalog-header__container
@@ -460,7 +461,7 @@
 	}
 	// .menu-catalog__list
 	&__list {
-		
+		margin-bottom: -2px;
 		display: flex;
 		justify-content: space-between;
 		gap: 10px;
