@@ -7,7 +7,7 @@
 // Подключаем слайдер Swiper из node_modules
 // При необходимости подключаем дополнительные модули слайдера, указывая их в {} через запятую
 // Пример: { Navigation, Autoplay }
-import Swiper, { Navigation } from 'swiper';
+import Swiper, { Navigation, Pagination, Parallax, Autoplay } from 'swiper';
 /*
 Основниые модули слайдера:
 Navigation, Pagination, Autoplay, 
@@ -45,39 +45,38 @@ function initSliders() {
 	bildSliders();
 
 	// Перечень слайдеров
-	if (document.querySelector('.swiper')) {
-		new Swiper('.swiper', {
+	if (document.querySelector('.main-block__slider')) {
+		new Swiper('.main-block__slider', {
 			// Подключаем модули слайдера
 			// для конкретного случая
-			//modules: [Navigation, Pagination],
-			/*
-			effect: 'fade',
+			modules: [Navigation, Pagination, Parallax, Autoplay],
+			// effect: 'fade',
 			autoplay: {
 				delay: 3000,
 				disableOnInteraction: false,
 			},
-			*/
 			observer: true,
 			observeParents: true,
 			slidesPerView: 1,
-			spaceBetween: 0,
-			autoHeight: true,
+			spaceBetween: 50,
+			parallax: true,
+			// autoHeight: true,
 			speed: 800,
 			//touchRatio: 0,
 			//simulateTouch: false,
-			//loop: true,
+			loop: true,
 			//preloadImages: false,
 			//lazy: true,
 			// Dotts
-			//pagination: {
-			//	el: '.slider-quality__pagging',
-			//	clickable: true,
-			//},
-			// Arrows
-			navigation: {
-				nextEl: '.about__more .more__item_next',
-				prevEl: '.about__more .more__item_prev',
+			pagination: {
+				el: '.controll-main-block__dotts',
+				clickable: true,
 			},
+			// Arrows
+			// navigation: {
+			// 	nextEl: '.about__more .more__item_next',
+			// 	prevEl: '.about__more .more__item_prev',
+			// },
 			/*
 			breakpoints: {
 				320: {
@@ -100,6 +99,14 @@ function initSliders() {
 			},
 			*/
 			on: {
+				init: function (swiper) {
+					const allSlides = document.querySelector('.fraction-controll__all');
+					allSlides.innerHTML = swiper.slides.length - 2 < 10 ? `0${swiper.slides.length - 2}` : swiper.slides.length - 2;
+				},
+				slideChange: function (swiper) {
+					const currentSlide = document.querySelector('.fraction-controll__current');
+					currentSlide.innerHTML = swiper.realIndex + 1 < 10 ? `0${swiper.realIndex + 1}` : swiper.realIndex + 1;
+				}	
 
 			}
 		});
