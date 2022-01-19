@@ -101,7 +101,9 @@ function initSliders() {
 			on: {
 				init: function (swiper) {
 					const allSlides = document.querySelector('.fraction-controll__all');
-					allSlides.innerHTML = swiper.slides.length - 2 < 10 ? `0${swiper.slides.length - 2}` : swiper.slides.length - 2;
+					const allSlidesItems = document.querySelectorAll('.slide-main-block:not(.swiper-slide-duplicate)');
+					// allSlides.innerHTML = swiper.slides.length - 2 < 10 ? `0${swiper.slides.length - 2}` : swiper.slides.length - 2;
+					allSlides.innerHTML = allSlidesItems.length < 10 ? `0${allSlidesItems.length}` : allSlidesItems.length;
 				},
 				slideChange: function (swiper) {
 					const currentSlide = document.querySelector('.fraction-controll__current');
